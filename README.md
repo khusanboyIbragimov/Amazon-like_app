@@ -1,4 +1,4 @@
-# Bamazon
+# Amazon like app
 
 ## Description
 
