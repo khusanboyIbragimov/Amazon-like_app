@@ -52,15 +52,21 @@ function displayLowInventory() {
     queryDb = 'SELECT * FROM products';
     connection.query(queryDb, function (err, data) {
         if (err) throw err;
-                   
+        
+        var inventoryUpdated = true;
         for (var i = 0; i < data.length; i++) {
             if (data[i].stock_quantity < 5) {
+                console.log("\n*******************************************************************************************\n");         
                 console.log('Item ID: ' + data[i].item_id + '  ||  ' + 'Product Name: ' + data[i].product_name + ' || ' +
                     'Department: ' + data[i].department_name + '  ||  ' + 'Price: $' + data[i].price + ' || ' + 'Inventory count: ' + data[i].stock_quantity + '\n');
+                
+                inventoryUpdated = false;
             }
-            // else{
-            //     console.log("Inventory is allready updated");
-            // }
+        }
+
+        if(inventoryUpdated){
+            console.log("\n*******************************************************************************************\n");
+            console.log("Enough inventory!!\n");
         }
         
         console.log("*******************************************************************************************\n");
@@ -168,12 +174,12 @@ function displayInventory() {
         if (err) throw err;
 
         console.log('\n**********************************__Existing Inventory__**********************************\n');
-        console.log("*******************************************************************************************\n");
+        console.log("*******************************************************************************************");
 
         for (var i = 0; i < data.length; i++) {
             var table = data[i];
             console.log('Item ID: ' + table.item_id + '  ||  ' + 'Product Name: ' + table.product_name + ' || ' +
-                'Department: ' + table.department_name + '  ||  ' + 'Price: $' + table.price + ' || ' + 'Quantity: ' + table.stock_quantity + '\n');
+                'Department: ' + table.department_name + '  ||  ' + 'Price: $' + table.price + ' || ' + 'Quantity: ' + table.stock_quantity);
         }
         console.log("*******************************************************************************************\n");
 

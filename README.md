@@ -26,3 +26,4 @@ The **Add to Inventory** option allows the user to select a given item ID and ad
 
 The **Add New Product** option allows the user to enter details about a new product which will be entered into the database upon completion of the form.
 
+This is link of my screenshot https://drive.google.com/file/d/18svLizL8nkG3nCH3WAdR8bu5Lyu3FmiH/view

@@ -58,21 +58,21 @@ function promptUserPurchase() {
 				var productData = data[0];
 
 				if (quantity <= productData.stock_quantity) {
-					console.log('\n Congratulations, the product you requested is in stock! Placing order!\n');
+					console.log('\n Congratulations, the product you requested is in stock! Placing order!');
 					var updateQueryStr = 'UPDATE products SET stock_quantity = ' + (productData.stock_quantity - quantity) + ' WHERE item_id = ' + item;
 
 					connection.query(updateQueryStr, function (err, data) {
 						if (err) throw err;
 						console.log("*******************************************************************************************");
 						console.log('Your product is:', productData.product_name + ',' , 'your total is: $' + productData.price * quantity);
-						console.log("*******************************************************************************************\n");
+						console.log("*******************************************************************************************");
 
 						connection.end();
 					})
 				} else {
 					console.log('Sorry, there is not enough product in stock, your order can not be placed as is.');
 					console.log('Please modify your order.');
-					console.log("*******************************************************************************************\n");
+					console.log("*******************************************************************************************");
 
 					displayInventory();
 				}
@@ -87,16 +87,16 @@ function displayInventory() {
 	connection.query(queryStr, function (err, data) {
 		if (err) throw err;
 
-		console.log('**********************************__Existing Inventory__**********************************\n');
-		console.log("*******************************************************************************************\n");
+		console.log('**********************************__Existing Inventory__**********************************');
+		console.log("*******************************************************************************************");
 
 
 		for (var i = 0; i < data.length; i++) {
 			console.log('Item ID: ' + data[i].item_id + '  ||  ' + 'Product Name: ' + data[i].product_name + ' || ' +
-			'Department: ' + data[i].department_name + '  ||  ' + 'Price: $' + data[i].price + '\n');
+			'Department: ' + data[i].department_name + '  ||  ' + 'Price: $' + data[i].price);
 		}
 
-		console.log("*******************************************************************************************\n");
+		console.log("*******************************************************************************************");
 
 		promptUserPurchase();
 	})
